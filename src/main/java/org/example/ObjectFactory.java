@@ -28,6 +28,8 @@ public class ObjectFactory {
     private static final QName _PersonNotFoundEx_QNAME = new QName("http://example.org/", "PersonNotFoundEx");
     private static final QName _AddPerson_QNAME = new QName("http://example.org/", "addPerson");
     private static final QName _AddPersonResponse_QNAME = new QName("http://example.org/", "addPersonResponse");
+    private static final QName _UpdatePerson_QNAME = new QName("http://example.org/", "updatePerson");
+    private static final QName _UpdatePersonResponse_QNAME = new QName("http://example.org/", "updatePersonResponse");
     private static final QName _CountPersons_QNAME = new QName("http://example.org/", "countPersons");
     private static final QName _CountPersonsResponse_QNAME = new QName("http://example.org/", "countPersonsResponse");
     private static final QName _DeletePerson_QNAME = new QName("http://example.org/", "deletePerson");
@@ -82,6 +84,26 @@ public class ObjectFactory {
      */
     public AddPersonResponse createAddPersonResponse() {
         return new AddPersonResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdatePerson }
+     * 
+     * @return
+     *     the new instance of {@link UpdatePerson }
+     */
+    public UpdatePerson createUpdatePerson() {
+        return new UpdatePerson();
+    }
+
+    /**
+     * Create an instance of {@link UpdatePersonResponse }
+     * 
+     * @return
+     *     the new instance of {@link UpdatePersonResponse }
+     */
+    public UpdatePersonResponse createUpdatePersonResponse() {
+        return new UpdatePersonResponse();
     }
 
     /**
@@ -224,6 +246,32 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://example.org/", name = "addPersonResponse")
     public JAXBElement<AddPersonResponse> createAddPersonResponse(AddPersonResponse value) {
         return new JAXBElement<>(_AddPersonResponse_QNAME, AddPersonResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdatePerson }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link UpdatePerson }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://example.org/", name = "updatePerson")
+    public JAXBElement<UpdatePerson> createUpdatePerson(UpdatePerson value) {
+        return new JAXBElement<>(_UpdatePerson_QNAME, UpdatePerson.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdatePersonResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link UpdatePersonResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://example.org/", name = "updatePersonResponse")
+    public JAXBElement<UpdatePersonResponse> createUpdatePersonResponse(UpdatePersonResponse value) {
+        return new JAXBElement<>(_UpdatePersonResponse_QNAME, UpdatePersonResponse.class, null, value);
     }
 
     /**

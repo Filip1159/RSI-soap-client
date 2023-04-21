@@ -103,4 +103,27 @@ public interface PersonService {
         throws PersonExistsEx_Exception
     ;
 
+    /**
+     * 
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @return
+     *     returns org.example.Person
+     * @throws PersonNotFoundEx_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "updatePerson", targetNamespace = "http://example.org/", className = "org.example.UpdatePerson")
+    @ResponseWrapper(localName = "updatePersonResponse", targetNamespace = "http://example.org/", className = "org.example.UpdatePersonResponse")
+    public Person updatePerson(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        int arg2)
+        throws PersonNotFoundEx_Exception
+    ;
+
 }

@@ -11,6 +11,8 @@
             <xs:element name="PersonNotFoundEx" type="tns:PersonNotFoundEx"/>
             <xs:element name="addPerson" type="tns:addPerson"/>
             <xs:element name="addPersonResponse" type="tns:addPersonResponse"/>
+            <xs:element name="updatePerson" type="tns:updatePerson"/>
+            <xs:element name="updatePersonResponse" type="tns:updatePersonResponse"/>
             <xs:element name="countPersons" type="tns:countPersons"/>
             <xs:element name="countPersonsResponse" type="tns:countPersonsResponse"/>
             <xs:element name="deletePerson" type="tns:deletePerson"/>
@@ -50,6 +52,18 @@
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="addPersonResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="tns:person" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="updatePerson">
+                <xs:sequence>
+                    <xs:element name="arg0" type="xs:int"/>
+                    <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+                    <xs:element name="arg2" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="updatePersonResponse">
                 <xs:sequence>
                     <xs:element name="return" type="tns:person" minOccurs="0"/>
                 </xs:sequence>
@@ -119,6 +133,12 @@
     <message name="addPersonResponse">
         <part name="parameters" element="tns:addPersonResponse"/>
     </message>
+    <message name="updatePerson">
+        <part name="parameters" element="tns:updatePerson"/>
+    </message>
+    <message name="updatePersonResponse">
+        <part name="parameters" element="tns:updatePersonResponse"/>
+    </message>
     <message name="PersonExistsEx">
         <part name="fault" element="tns:PersonExistsEx"/>
     </message>
@@ -145,6 +165,11 @@
             <input message="tns:addPerson"/>
             <output message="tns:addPersonResponse"/>
             <fault message="tns:PersonExistsEx" name="PersonExistsEx" />
+        </operation>
+        <operation name="updatePerson">
+            <input message="tns:updatePerson"/>
+            <output message="tns:updatePersonResponse"/>
+            <fault message="tns:PersonNotFoundEx" name="PersonNotFoundEx" />
         </operation>
     </portType>
     <binding name="PersonServiceImplPortBinding" type="tns:PersonService">
@@ -201,6 +226,18 @@
             </output>
             <fault name="PersonExistsEx">
                 <soap:fault name="PersonExistsEx" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="updatePerson">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="PersonNotFoundEx">
+                <soap:fault name="PersonNotFoundEx" use="literal"/>
             </fault>
         </operation>
     </binding>
